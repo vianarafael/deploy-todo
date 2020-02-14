@@ -1,7 +1,9 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("todos", function(table) {
-    table.increments(); // id field with primary key
-    table.string("todo");
+  return knex.schema.dropTable("todos").then(() => {
+    return knex.schema.createTable("todos", function(table) {
+      table.increments(); // id field with primary key
+      table.string("todo");
+    });
   });
 };
 
